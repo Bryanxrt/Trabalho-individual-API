@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
 
-public class AnimalResquestDto {
+public class AnimalRequestDto {
 
     @NotBlank(message = "Nome é obrigatório")
     private String nome;

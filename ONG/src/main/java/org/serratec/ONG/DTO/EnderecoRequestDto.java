@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public class EnderecoRequetDto {
+public class EnderecoRequestDto {
 
     @NotNull(message = "O ID da pessoa é obrigatório")
     private Long pessoaId;
