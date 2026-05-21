@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
-public class CaracteriscaResquestDto {
+public class CaracteriscaRequestDto {
 
     @NotNull(message = "O ID do animal é obrigatório")
     private Long animalId;

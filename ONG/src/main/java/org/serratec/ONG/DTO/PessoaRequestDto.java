@@ -2,7 +2,7 @@ package org.serratec.ONG.DTO;
 
 import jakarta.validation.constraints.*;
 
-public class PessoaResquestDto {
+public class PessoaRequestDto {
 
     @NotBlank(message = "O nome deve ser preenchido")
     @Size(min = 2, max = 50, message = "Nome deve ter entre 2 e 50 caracteres")
