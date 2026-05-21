@@ -1,6 +1,5 @@
 package org.serratec.ONG.DTO;
 
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
@@ -14,9 +13,6 @@ public class AnimalResquestDto {
     private String especie;
 
     private String raca;
-
-    @Min(0)
-    private Integer idade;
 
     private LocalDate dataChegada;
 
@@ -42,14 +38,6 @@ public class AnimalResquestDto {
 
     public void setRaca(String raca) {
         this.raca = raca;
-    }
-
-    public Integer getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
     }
 
     public LocalDate getDataChegada() {

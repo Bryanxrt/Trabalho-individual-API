@@ -1,30 +1,29 @@
-package org.serratec.ONG.Domain;
+package org.serratec.ONG.DTO;
 
-import jakarta.persistence.*;
+import org.serratec.ONG.Domain.Caracterisca;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
-@Entity
-@Table(name = "caracteriscas")
-public class Caracterisca {
+public class CaracteriscaResponseDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "id_animal")
-    private Animal animal;
-
     private String porte;
     private BigDecimal peso;
     private BigDecimal altura;
     private String pelo;
     private Integer idade;
 
-
-    public Caracterisca() {}
+    public static CaracteriscaResponseDto from(Caracterisca c) {
+        if (c == null) return null;
+        CaracteriscaResponseDto dto = new CaracteriscaResponseDto();
+        dto.id     = c.getId();
+        dto.porte  = c.getPorte();
+        dto.peso   = c.getPeso();
+        dto.altura = c.getAltura();
+        dto.pelo   = c.getPelo();
+        dto.idade  = c.getIdade();
+        return dto;
+    }
 
     public Long getId() {
         return id;
@@ -32,14 +31,6 @@ public class Caracterisca {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Animal getAnimal() {
-        return animal;
-    }
-
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
     }
 
     public String getPorte() {

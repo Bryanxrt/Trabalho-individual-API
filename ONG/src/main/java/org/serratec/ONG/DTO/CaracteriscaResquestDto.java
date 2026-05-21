@@ -1,45 +1,35 @@
-package org.serratec.ONG.Domain;
+package org.serratec.ONG.DTO;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
-@Entity
-@Table(name = "caracteriscas")
-public class Caracterisca {
+public class CaracteriscaResquestDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "id_animal")
-    private Animal animal;
+    @NotNull(message = "O ID do animal é obrigatório")
+    private Long animalId;
 
     private String porte;
+
+    @DecimalMin(value = "0.0", message = "Peso não pode ser negativo")
     private BigDecimal peso;
+
+    @DecimalMin(value = "0.0", message = "Altura não pode ser negativa")
     private BigDecimal altura;
+
     private String pelo;
+
+    @Min(value = 0, message = "Idade não pode ser negativa")
     private Integer idade;
 
-
-    public Caracterisca() {}
-
-    public Long getId() {
-        return id;
+    public Long getAnimalId() {
+        return animalId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Animal getAnimal() {
-        return animal;
-    }
-
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
+    public void setAnimalId(Long animalId) {
+        this.animalId = animalId;
     }
 
     public String getPorte() {
