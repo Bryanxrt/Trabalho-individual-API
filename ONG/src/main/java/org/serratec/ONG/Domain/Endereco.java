@@ -1,5 +1,6 @@
 package org.serratec.ONG.Domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -19,18 +20,8 @@ public class Endereco {
 
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
+    @JsonBackReference("pessoa-enderecos")
     private Pessoa pessoa;
-
-    public Endereco(Long id, String logradouro, String complemento, String bairro, String cidade, String uf, String cep, Pessoa pessoa) {
-        this.id = id;
-        this.logradouro = logradouro;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.uf = uf;
-        this.cep = cep;
-        this.pessoa = pessoa;
-    }
 
     public Endereco() {}
 

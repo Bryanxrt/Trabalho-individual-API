@@ -1,11 +1,14 @@
 package org.serratec.ONG.Domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "doacoes")
+@Table(name = "interesse_adocao")
 public class InteresseAdocao {
 
     @Id
@@ -13,15 +16,18 @@ public class InteresseAdocao {
     private Long id;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "id_animal", nullable = false)
     private Animal animal;
 
     @ManyToOne
     @JoinColumn(name = "id_pessoa", nullable = false)
+    @JsonBackReference("pessoa-interesses")
     private Pessoa pessoa;
 
-    @Column(name = "data_doacao", nullable = false)
-    private LocalDate dataDoacao;
+    @NotNull(message = "A data de interesse de doacao é obrigatória")
+    @Past(message = "A data deve estar no passado")
+    @Column(name = "data_interesse", nullable = false)
+    private LocalDate dataInteresse;
 
     @Column(columnDefinition = "TEXT")
     private String descricao;
@@ -50,12 +56,12 @@ public class InteresseAdocao {
         this.pessoa = pessoa;
     }
 
-    public LocalDate getDataDoacao() {
-        return dataDoacao;
+    public LocalDate getDataInteresse() {
+        return dataInteresse;
     }
 
-    public void setDataDoacao(LocalDate dataDoacao) {
-        this.dataDoacao = dataDoacao;
+    public void setDataInteresse(LocalDate dataInteresse) {
+        this.dataInteresse = dataInteresse;
     }
 
     public String getDescricao() {

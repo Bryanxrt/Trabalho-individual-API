@@ -1,10 +1,12 @@
 package org.serratec.ONG.Domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,20 +29,18 @@ public class Pessoa {
     @NotBlank(message = "O telefone deve ser preenchido")
     private String telefone;
 
-    @OneToMany(mappedBy = "endereco")
-    private List<Endereco> endereco;
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
+    @JsonManagedReference("pessoa-enderecos")
+    private List<Endereco> endereco = new ArrayList<>();
 
     @OneToMany(mappedBy = "interesseAdocao", cascade = CascadeType.ALL)
-    private List<InteresseAdocao> interesseAdocao;
+    @JsonManagedReference("pessoa-interesses")
+    private List<InteresseAdocao> interesseAdocao =  new ArrayList<>();
 
-    public Pessoa(Long id, String nome, String email, String telefone, List<Endereco> endereco, List<InteresseAdocao> interesseAdocao) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
-        this.endereco = endereco;
-        this.interesseAdocao = interesseAdocao;
-    }
+    @ManyToMany
+    @JoinTable(name = "pessoa_animal_apadrinhado", joinColumns = @JoinColumn(name = "id_pessoa"),
+            inverseJoinColumns = @JoinColumn(name = "id_animal"))
+    private List<Animal> animaisApadrinhados = new ArrayList<>();
 
     public Pessoa() {}
 
@@ -90,5 +90,13 @@ public class Pessoa {
 
     public void setInteresseAdocao(List<InteresseAdocao> interesseAdocao) {
         this.interesseAdocao = interesseAdocao;
+    }
+
+    public List<Animal> getAnimaisApadrinhados() {
+        return animaisApadrinhados;
+    }
+
+    public void setAnimaisApadrinhados(List<Animal> animaisApadrinhados) {
+        this.animaisApadrinhados = animaisApadrinhados;
     }
 }

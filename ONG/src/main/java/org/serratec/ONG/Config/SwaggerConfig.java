@@ -15,7 +15,7 @@ public class SwaggerConfig {
         return new OpenAPI().info(new Info()
                 .title("API de ONG DE ANIMAIS PARA ADOCAO")
                 .version("1.0")
-                .description(" Bem-vindo à API ONG")
+                .description(" Bem-vindo à API ONG ")
                 .contact(new Contact().name("Igor")
                         .email("igor@email.com")
                         .url("https://github.com/Bryanxrt"))
