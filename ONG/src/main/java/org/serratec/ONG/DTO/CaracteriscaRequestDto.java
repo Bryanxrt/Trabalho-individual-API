@@ -1,8 +1,8 @@
 package org.serratec.ONG.DTO;
 
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 
@@ -13,10 +13,10 @@ public class CaracteriscaRequestDto {
 
     private String porte;
 
-    @DecimalMin(value = "0.0", message = "Peso não pode ser negativo")
+    @Positive(message = "Peso deve ser positivo")
     private BigDecimal peso;
 
-    @DecimalMin(value = "0.0", message = "Altura não pode ser negativa")
+    @Positive(message = "Altura deve ser positiva")
     private BigDecimal altura;
 
     private String pelo;

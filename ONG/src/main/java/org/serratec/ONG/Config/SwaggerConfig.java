@@ -13,11 +13,11 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI().info(new Info()
-                .title("API de ONG DE ANIMAIS PARA ADOCAO")
+                .title("API - ONG de Adoção de Animais")
                 .version("1.0")
-                .description(" Bem-vindo à API ONG ")
+                .description("API RESTful para gerenciamento de uma ONG de adoção de animais")
                 .contact(new Contact().name("Igor")
-                        .email("igor@email.com")
+                        .email("igorbrian04@email.com")
                         .url("https://github.com/Bryanxrt"))
                 .license(new License()
                         .name("Apache 2.0")
