@@ -2,7 +2,7 @@ package org.serratec.ONG.DTO;
 
 import org.serratec.ONG.Domain.Endereco;
 
-public class EnderocoResponseDto {
+public class EnderecoResponseDto {
 
     private String logradouro;
     private String complemento;
@@ -12,8 +12,8 @@ public class EnderocoResponseDto {
     private String cep;
     private Long pessoaId;
 
-    public static EnderocoResponseDto from(Endereco endereco) {
-        EnderocoResponseDto dto = new EnderocoResponseDto();
+    public static EnderecoResponseDto from(Endereco endereco) {
+        EnderecoResponseDto dto = new EnderecoResponseDto();
         dto.logradouro = endereco.getLogradouro();
         dto.complemento = endereco.getComplemento();
         dto.bairro = endereco.getBairro();
