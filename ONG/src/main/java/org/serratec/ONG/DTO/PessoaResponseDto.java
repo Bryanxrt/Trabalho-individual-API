@@ -1,12 +1,23 @@
 package org.serratec.ONG.DTO;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.serratec.ONG.Domain.Pessoa;
 
+@JsonPropertyOrder({"id", "nome", "email", "telefone"})
+@Schema(description = "Dados retornados de uma pessoa")
 public class PessoaResponseDto {
 
+    @Schema(description = "ID da pessoa", example = "1")
     private Long id;
+
+    @Schema(description = "Nome completo", example = "João Silva")
     private String nome;
+
+    @Schema(description = "Email", example = "igor@email.com")
     private String email;
+
+    @Schema(description = "Email", example = "joao@email.com")
     private String telefone;
 
     public static PessoaResponseDto from(Pessoa pessoa) {

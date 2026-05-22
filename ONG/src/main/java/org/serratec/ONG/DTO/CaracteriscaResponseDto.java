@@ -1,16 +1,31 @@
 package org.serratec.ONG.DTO;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.serratec.ONG.Domain.Caracterisca;
 
 import java.math.BigDecimal;
 
+@JsonPropertyOrder({"id", "porte", "peso", "altura", "pelo", "idade"})
+@Schema(description = "Dados retornados das características de um animal")
 public class CaracteriscaResponseDto {
 
+    @Schema(description = "ID da característica", example = "1")
     private Long id;
+
+    @Schema(description = "Porte do animal", example = "Grande")
     private String porte;
+
+    @Schema(description = "Peso em kg", example = "30.5")
     private BigDecimal peso;
+
+    @Schema(description = "Altura em metros", example = "0.70")
     private BigDecimal altura;
+
+    @Schema(description = "Tipo de pelo", example = "curto")
     private String pelo;
+
+    @Schema(description = "Idade em anos", example = "5")
     private Integer idade;
 
     public static CaracteriscaResponseDto from(Caracterisca c) {

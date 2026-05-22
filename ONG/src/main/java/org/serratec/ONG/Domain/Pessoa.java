@@ -33,7 +33,7 @@ public class Pessoa {
     @JsonManagedReference("pessoa-enderecos")
     private List<Endereco> endereco = new ArrayList<>();
 
-    @OneToMany(mappedBy = "interesseAdocao", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
     @JsonManagedReference("pessoa-interesses")
     private List<InteresseAdocao> interesseAdocao =  new ArrayList<>();
 

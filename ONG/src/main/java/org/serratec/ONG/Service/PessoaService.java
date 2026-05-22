@@ -55,6 +55,13 @@ public class PessoaService {
         return PessoaResponseDto.from(pessoaRepository.save(pessoa));
     }
 
+    public void delete(Long id) {
+        if (!pessoaRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Pessoa", id);
+        }
+        pessoaRepository.deleteById(id);
+    }
+
     public PessoaResponseDto apadrinharAnimal(Long idPessoa, Long idAnimal) {
         Pessoa pessoa = pessoaRepository.findById(idPessoa)
                 .orElseThrow(() -> new ResourceNotFoundException("Pessoa", idPessoa));
